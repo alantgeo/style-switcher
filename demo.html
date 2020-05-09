@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Mapbox GL Style Switcher Control</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.css" rel="stylesheet" />
+
+    <script src="dist/mapbox-gl-style-switcher.js"></script>
+    <link href="dist/mapbox-gl-style-switcher.css" rel="stylesheet" />
+
+    <style>
+      body { margin: 0; padding: 0; }
+      #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      mapboxgl.accessToken = window.localStorage.getItem('MapboxAccessToken');
+
+      var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: [0, 0],
+        zoom: 0
+      });
+
+      var styles = [{
+        title: 'Dark',
+        uri: 'mapbox://styles/mapbox/dark-v9'
+      }, {
+        title: 'Light',
+        uri: 'mapbox://styles/mapbox/light-v9'
+      }];
+
+      var styleSwitcher = new MapboxStyleSwitcherControl(styles);
+
+      map.addControl(styleSwitcher);
+    </script>
+</body>
+</html>

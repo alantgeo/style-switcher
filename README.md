@@ -10,23 +10,23 @@ npm i mapbox-gl-style-switcher --save
 
 ## Usage:
 
-```ts
+```js
 import { MapboxStyleSwitcherControl } from "mapbox-gl-style-switcher";
-import { Map as MapboxMap } from "mapbox-gl";
+import mapboxgl from "mapbox-gl";
 
 import "mapbox-gl-style-switcher/styles.css";
 
-const map = new MapboxMap();
+const map = new mapboxgl.Map();
 map.addControl(new MapboxStyleSwitcherControl());
 ```
 
 ## Options:
 If you want to supply your own list of styles, pass them in the constructor.
 
-```ts
-import { MapboxStyleDefinition, MapboxStyleSwitcherControl } from "mapbox-gl-style-switcher";
+```js
+import { MapboxStyleSwitcherControl } from "mapbox-gl-style-switcher";
 
-const styles: MapboxStyleDefinition[] = [
+const styles = [
     {
         title: "Dark",
         uri:"mapbox://styles/mapbox/dark-v9"

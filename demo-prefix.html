@@ -39,6 +39,20 @@ var map = new mapboxgl.Map({
                 tiles: [
                     'http://a.tiles.mapbox.com/v4/mapbox.pirates/{z}/{x}/{y}.png?access_token=' + mapboxgl.accessToken
                 ]
+            },
+            'user': {
+                type: 'geojson',
+                data: {
+                    type: 'FeatureCollection',
+                    features: [{
+                        type: 'Feature',
+                        properties: {},
+                        geometry: {
+                            type: 'Point',
+                            coordinates: [0, 0]
+                        }
+                    }]
+                }
             }
         },
         layers: [
@@ -47,7 +61,7 @@ var map = new mapboxgl.Map({
                 type: 'raster',
                 source: 'pencil',
                 layout: {
-                    visibility: 'none'
+                    visibility: 'visible'
                 }
             },
             {
@@ -56,6 +70,17 @@ var map = new mapboxgl.Map({
                 source: 'pirates',
                 layout: {
                     visibility: 'none'
+                }
+            },
+            {
+                id: 'user-layer',
+                type: 'circle',
+                source: 'user',
+                layout: {
+                    visibility: 'visible'
+                },
+                paint: {
+                    'circle-radius': 100
                 }
             }
         ]
